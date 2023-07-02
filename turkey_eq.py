@@ -374,7 +374,7 @@ plot_maps([TNPGN_FILES_PRODUCT_10_24],
            EPICENTERS['10:24'])
 ## Repeat plot for night quake
 
-Note we changed limits for color scale
+# Note we changed limits for color scale
 times = [datetime(2023, 2, 6, 1, 17),
          datetime(2023, 2, 6, 1, 32),
          datetime(2023, 2, 6, 1, 37)]
@@ -1209,7 +1209,7 @@ plot_line(1.300, datetime(2023, 2, 6, 1, 28, 30))
 plot_line(0.900, datetime(2023, 2, 6, 1, 31, 30), style='dotted')
 # Ionosonde
 
-Here we plot foF2 and hmF2 data for earthquake day and day before and after that.
+# Here we plot foF2 and hmF2 data for earthquake day and day before and after that.
 import matplotlib.dates as mdates
 from collections import defaultdict
 
@@ -1491,4 +1491,3 @@ plot_sites(local_file, sat, sites[:], 'roti')
 site = '23ey'
 local_file = 'region_2023-02-06.h5'
 plot_all_sats(local_file, site, 'roti')
-
