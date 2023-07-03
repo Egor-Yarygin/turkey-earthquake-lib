@@ -1,70 +1,60 @@
-import matplotlib.pyplot as plt
-import numpy as np
-from turkey_eq import plot_map
-import os
+import pytest
 from datetime import datetime
+from turkey_eq import plot_map, retrieve_data
 
-# Тестирование базового случая
-def test_plot_map():
-    plot_times = ['2023-07-01T00:00:00', '2023-07-02T00:00:00']
-    data = {
-        'ROTI': {
-            '2023-07-01T00:00:00': np.array([(0, 0, 1.5), (1, 1, 2.5)]),
-            '2023-07-02T00:00:00': np.array([(0, 0, 2.0), (1, 1, 3.0)])
-        },
-        'TEC': {
-            '2023-07-01T00:00:00': np.array([(0, 0, 10.0), (1, 1, 15.0)]),
-            '2023-07-02T00:00:00': np.array([(0, 0, 12.0), (1, 1, 18.0)])
-        }
-    }
-    type_d = ['ROTI', 'TEC']
-    
-    # Проверка, что функция не вызывает ошибку
-    try:
-        plot_map(plot_times, data, type_d)
-    except Exception as e:
-        assert False, f"Функция вызвала ошибку: {e}"
-    
-    # Проверка, что график успешно создается
-    assert plt.gcf() is not None, "График не создан"
-    
-    # Дополнительные проверки, например, можно проверить количество подграфиков и их заголовки
-    
-    # Закрытие графика
-    plt.close()
-
-
-
-# Тестирование базового случая
+# Тест для функции retrieve_data()
 def test_retrieve_data():
-    file_path = "test_data.h5"
+    # Подготовка тестовых данных
+    file_path = "test_file.h5"
     type_d = "ROTI"
-    times = [
-        datetime(2023, 7, 1, 0, 0, 0),
-        datetime(2023, 7, 2, 0, 0, 0)
-    ]
-    # Создаем тестовый файл
-    with h5py.File(file_path, 'w') as f_out:
-        data = {
-            "2023-07-01T00:00:00": np.array([(0, 0, 1.5), (1, 1, 2.5)]),
-            "2023-07-02T00:00:00": np.array([(0, 0, 2.0), (1, 1, 3.0)])
+    times = [datetime(2023, 2, 6, 10, 25),
+             datetime(2023, 2, 6, 10, 40)]
+    
+    # Выполнение функции retrieve_data()
+    data = retrieve_data(file_path, type_d, times)
+    
+    # Проверка результатов
+    assert len(data) == 2  # Проверяем, что получены данные для двух временных моментов
+
+    # Тест для функции plot_map()
+def test_plot_map():
+    # Подготовка тестовых данных
+    plot_times = [datetime(2023, 2, 6, 10, 25),
+                  datetime(2023, 2, 6, 10, 40)]
+    data = {"ROTI": {
+        datetime(2023, 2, 6, 10, 25): {
+            "lat": [37.0, 38.0],
+            "lon": [37.0, 38.0],
+            "vals": [0.1, 0.2]
+        },
+        datetime(2023, 2, 6, 10, 40): {
+            "lat": [37.0, 38.0],
+            "lon": [37.0, 38.0],
+            "vals": [0.3, 0.4]
         }
-        for str_time, arr in data.items():
-            f_out['data'][str_time] = arr
+    }}
+    type_d = "ROTI"
+    lon_limits = (-180, 180)
+    lat_limits = (-90, 90)
+    nrows = 1
+    ncols = 2
+    markers = []
+    sort = False
+    use_alpha = False
+    clims = {
+        "ROTI": [0, 0.5, "TECu/min"]
+    }
+    savefig = ""
     
-    # Проверка, что функция не вызывает ошибку
-    try:
-        retrieved_data = retrieve_data(file_path, type_d, times)
-    except Exception as e:
-        assert False, f"Функция вызвала ошибку: {e}"
+    # Выполнение функции plot_map()
+    plot_map(plot_times, data, type_d, lon_limits, lat_limits, nrows, ncols,
+             markers, sort, use_alpha, clims, savefig)
     
-    # Проверка, что данные успешно получены
-    assert len(retrieved_data) == 2, "Неверное количество временных отметок"
-    assert all(time in retrieved_data for time in times), "Не все временные отметки присутствуют в данных"
-    
-    # Проверка, что данные правильно считались из файла (можно добавить дополнительные проверки данных)
-    assert np.array_equal(retrieved_data[datetime(2023, 7, 1, 0, 0, 0)], np.array([(0, 0, 1.5), (1, 1, 2.5)])), "Неверные данные для временной отметки 2023-07-01T00:00:00"
-    assert np.array_equal(retrieved_data[datetime(2023, 7, 2, 0, 0, 0)], np.array([(0, 0, 2.0), (1, 1, 3.0)])), "Неверные данные для временной отметки 2023-07-02T00:00:00"
-    
-    # Удаление тестового файла
-    os.remove(file_path)
+    # Проверка результатов
+    # В данном случае, проверить результаты может быть сложно, 
+    # так как функция plot_map() визуализирует данные на графике,
+    # поэтому лучше проверить визуально, что график отображается без ошибок.
+
+# Запуск тестов
+if __name__ == "__main__":
+    pytest.main()

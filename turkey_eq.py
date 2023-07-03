@@ -59,42 +59,42 @@
 # We already collect data and provide urls below. You can do it by your own on SIMuRG site under [create_map](https://simurg.iszf.irk.ru/create_map) option.
 import requests
 import os
-URLS = {"roti_10_24.h5": 
-            "https://simurg.space/files/roti_2023_037_25_50_N_25_50_E_645f.h5",
-        "dtec_2_10_10_24.h5": 
-            "https://simurg.space/files/dtec_2_10_2023_037_25_50_N_25_50_E_1447.h5",
-        "dtec_10_20_10_24.h5": 
-            "https://simurg.space/files/dtec_10_20_2023_037_25_50_N_25_50_E_840f.h5",
-        "dtec_20_60_10_24.h5": 
-            "https://simurg.space/files/dtec_20_60_2023_037_25_50_N_25_50_E_6769.h5",        
-        "roti_01_17.h5": 
-            "https://simurg.space/files/roti_2023_037_25_50_N_25_50_E_c5ab.h5",
-        "dtec_2_10_01_17.h5": 
-            "https://simurg.space/files/dtec_2_10_2023_037_25_50_N_25_50_E_421a.h5",
-        "dtec_10_20_01_17.h5": 
-            "https://simurg.space/files/dtec_10_20_2023_037_25_50_N_25_50_E_2051.h5",
-        "dtec_20_60_01_17.h5": 
-            "https://simurg.space/files/dtec_20_60_2023_037_25_50_N_25_50_E_b483.h5",
-       }
+# URLS = {"roti_10_24.h5": 
+#             "https://simurg.space/files/roti_2023_037_25_50_N_25_50_E_645f.h5",
+#         "dtec_2_10_10_24.h5": 
+#             "https://simurg.space/files/dtec_2_10_2023_037_25_50_N_25_50_E_1447.h5",
+#         "dtec_10_20_10_24.h5": 
+#             "https://simurg.space/files/dtec_10_20_2023_037_25_50_N_25_50_E_840f.h5",
+#         "dtec_20_60_10_24.h5": 
+#             "https://simurg.space/files/dtec_20_60_2023_037_25_50_N_25_50_E_6769.h5",        
+#         "roti_01_17.h5": 
+#             "https://simurg.space/files/roti_2023_037_25_50_N_25_50_E_c5ab.h5",
+#         "dtec_2_10_01_17.h5": 
+#             "https://simurg.space/files/dtec_2_10_2023_037_25_50_N_25_50_E_421a.h5",
+#         "dtec_10_20_01_17.h5": 
+#             "https://simurg.space/files/dtec_10_20_2023_037_25_50_N_25_50_E_2051.h5",
+#         "dtec_20_60_01_17.h5": 
+#             "https://simurg.space/files/dtec_20_60_2023_037_25_50_N_25_50_E_b483.h5",
+#        }
 
-URLS.update({ "roti_10_24.h5": 
-                    "https://simurg.space/ufiles/roti_2023_037_25_50_N_25_50_E_8fc2.h5",
-              "dtec_2_10_10_24.h5": 
-                    "https://simurg.space/ufiles/dtec_2_10_2023_037_25_50_N_25_50_E_cfeb.h5",
-              "dtec_10_20_10_24.h5": 
-                    "https://simurg.space/ufiles/dtec_10_20_2023_037_25_50_N_25_50_E_3290.h5",
-              "dtec_20_60_10_24.h5": 
-                    "https://simurg.space/ufiles/dtec_20_60_2023_037_25_50_N_25_50_E_30d5.h5",        
-              "roti_01_17.h5": 
-                  "https://simurg.space/ufiles/roti_2023_037_25_50_N_25_50_E_d6aa.h5",
-              "dtec_2_10_01_17.h5": 
-                  "https://simurg.space/ufiles/dtec_2_10_2023_037_25_50_N_25_50_E_44e1.h5",
-              "dtec_10_20_01_17.h5": 
-                  "https://simurg.space/ufiles/dtec_10_20_2023_037_25_50_N_25_50_E_d0de.h5",
-              "dtec_20_60_01_17.h5": 
-                  "https://simurg.space/ufiles/dtec_20_60_2023_037_25_50_N_25_50_E_77bc.h5"
-            }
-           )
+# URLS.update({ "roti_10_24.h5": 
+#                     "https://simurg.space/ufiles/roti_2023_037_25_50_N_25_50_E_8fc2.h5",
+#               "dtec_2_10_10_24.h5": 
+#                     "https://simurg.space/ufiles/dtec_2_10_2023_037_25_50_N_25_50_E_cfeb.h5",
+#               "dtec_10_20_10_24.h5": 
+#                     "https://simurg.space/ufiles/dtec_10_20_2023_037_25_50_N_25_50_E_3290.h5",
+#               "dtec_20_60_10_24.h5": 
+#                     "https://simurg.space/ufiles/dtec_20_60_2023_037_25_50_N_25_50_E_30d5.h5",        
+#               "roti_01_17.h5": 
+#                   "https://simurg.space/ufiles/roti_2023_037_25_50_N_25_50_E_d6aa.h5",
+#               "dtec_2_10_01_17.h5": 
+#                   "https://simurg.space/ufiles/dtec_2_10_2023_037_25_50_N_25_50_E_44e1.h5",
+#               "dtec_10_20_01_17.h5": 
+#                   "https://simurg.space/ufiles/dtec_10_20_2023_037_25_50_N_25_50_E_d0de.h5",
+#               "dtec_20_60_01_17.h5": 
+#                   "https://simurg.space/ufiles/dtec_20_60_2023_037_25_50_N_25_50_E_77bc.h5"
+#             }
+#            )
 
 
 FILES_PRODUCT_10_24 = {"roti_10_24.h5": "ROTI",
@@ -110,9 +110,9 @@ FILES_PRODUCT_01_17 = {"roti_01_17.h5": "ROTI",
                       }
 
 TNPGN_FILES_PRODUCT_10_24 = {"tnpgn_roti_10_24.h5": "ROTI",
-                             "tnpgn_dtec_2_10_10_24.h5": "2-10 minute TEC variations",
-                             "tnpgn_dtec_10_20_10_24.h5": "10-20 minute TEC variations",
-                             "tnpgn_dtec_20_60_10_24.h5": "20-60 minute TEC variations",
+                            #  "tnpgn_dtec_2_10_10_24.h5": "2-10 minute TEC variations",
+                            #  "tnpgn_dtec_10_20_10_24.h5": "10-20 minute TEC variations",
+                            #  "tnpgn_dtec_20_60_10_24.h5": "20-60 minute TEC variations",
                             }
 
 TNPGN_FILES_PRODUCT_01_17 = {"tnpgn_roti_01_17.h5": "ROTI",
@@ -121,10 +121,10 @@ TNPGN_FILES_PRODUCT_01_17 = {"tnpgn_roti_01_17.h5": "ROTI",
                              "tnpgn_dtec_20_60_01_17.h5": "20-60 minute TEC variations",
                             }
 
-for local_file, url in URLS.items():
-    if not os.path.exists(local_file):
-        response = requests.get(url)
-        open(local_file, "wb").write(response.content)
+# for local_file, url in URLS.items():
+#     if not os.path.exists(local_file):
+#         response = requests.get(url)
+#         open(local_file, "wb").write(response.content)
 # Including necessary packages
 import h5py
 import os
@@ -294,14 +294,14 @@ def plot_map(plot_times, data, type_d,
 
 
 #Plot data from map file
-def retrieve_data(file, type_d, times=[]):    
+def retrieve_data(file_path, type_d, times=[]): 
     """
     Plotting data from map file
     input - <file> string type name of file 
             <type_d> string type of data going to be plotted
     output - figures
     """  
-    f_in = h5py.File(file, 'r')
+    f_in = h5py.File(file_path, 'r')
     lats = []
     lons = []
     values = []
@@ -312,6 +312,7 @@ def retrieve_data(file, type_d, times=[]):
         if times and not time in times:
             continue
         data[time] = f_in['data'][str_time][:]
+    print(data)
     return data
 
 def _merge_structured_arrays(arrays):
@@ -327,7 +328,8 @@ def _merge_structured_arrays(arrays):
 def retrieve_data_multiple_source(files, type_d, times=[]):
     datas = defaultdict(list)
     for file in files:
-        file_data = retrieve_data(file, type_d, times=times)
+        file_path = os.path.join('uploads', file)
+        file_data = retrieve_data(file_path, type_d, times=times)
         for time, data in file_data.items():
             datas[time].append(data)
     for time in datas:
@@ -363,26 +365,29 @@ def plot_maps(prod_files, prods, epc, clims=None, times=None, scale=1):
                  sort=True,
                  markers=[EPICENTERS['10:24']],
                  clims=C_LIMITS)
-plot_maps([FILES_PRODUCT_10_24, TNPGN_FILES_PRODUCT_10_24], 
-          FILES_PRODUCT_10_24, 
+plot_maps([FILES_PRODUCT_10_24], FILES_PRODUCT_10_24, 
           EPICENTERS['10:24'])
-plot_maps([FILES_PRODUCT_10_24], 
-          FILES_PRODUCT_10_24, 
-          EPICENTERS['10:24'])
+plot_maps([FILES_PRODUCT_01_17], 
+          FILES_PRODUCT_01_17, 
+          EPICENTERS['01:17'])
+plot_maps([FILES_PRODUCT_01_17, TNPGN_FILES_PRODUCT_01_17], 
+          TNPGN_FILES_PRODUCT_01_17, 
+          EPICENTERS['01:17'])
 plot_maps([TNPGN_FILES_PRODUCT_10_24], 
            TNPGN_FILES_PRODUCT_10_24, 
            EPICENTERS['10:24'])
-## Repeat plot for night quake
 
-# Note we changed limits for color scale
-times = [datetime(2023, 2, 6, 1, 17),
-         datetime(2023, 2, 6, 1, 32),
-         datetime(2023, 2, 6, 1, 37)]
-plot_maps([FILES_PRODUCT_01_17, TNPGN_FILES_PRODUCT_01_17], 
-          FILES_PRODUCT_01_17, 
-          EPICENTERS['01:17'], 
-          times = times,
-          scale=0.25)
+# ## Repeat plot for night quake
+
+# # # Note we changed limits for color scale
+# times = [datetime(2023, 2, 6, 1, 17),
+#          datetime(2023, 2, 6, 1, 32),
+#          datetime(2023, 2, 6, 1, 37)]
+# plot_maps([FILES_PRODUCT_01_17, TNPGN_FILES_PRODUCT_01_17], 
+#           FILES_PRODUCT_01_17, 
+#           EPICENTERS['01:17'], 
+#           times = times,
+#           scale=0.25)
 C_LIMITS ={
     'ROTI': [0,0.1,'TECu/min'],
     '2-10 minute TEC variations': [-0.1,0.1,'TECu'],

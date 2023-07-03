@@ -8,13 +8,15 @@ setup(
    author='Egor Yarygin',
    author_email='egoryarygin2003@mail.ru',
    url='https://github.com/Egor-Yarygin/turkey-earthquake-lib',
-   packages=['turkey_eq'], 
-   install_requires=["numpy",
+   packages=[''], 
+   install_requires=[
+        "numpy",
         "matplotlib",
         "requests",
         "h5py",
-        "cartopy",
-        "dateutil",
-        "scipy",], 
+        "python-dateutil",
+        "scipy",
+        "pytest"
+        ], 
    python_requires='>=3',
 )
