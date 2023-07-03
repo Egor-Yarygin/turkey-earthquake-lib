@@ -1,7 +1,0 @@
-numpy
-matplotlib
-requests
-h5py
-python-dateutil
-scipy
-pytest
