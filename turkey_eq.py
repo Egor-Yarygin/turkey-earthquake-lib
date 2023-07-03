@@ -110,9 +110,9 @@ FILES_PRODUCT_01_17 = {"roti_01_17.h5": "ROTI",
                       }
 
 TNPGN_FILES_PRODUCT_10_24 = {"tnpgn_roti_10_24.h5": "ROTI",
-                            #  "tnpgn_dtec_2_10_10_24.h5": "2-10 minute TEC variations",
-                            #  "tnpgn_dtec_10_20_10_24.h5": "10-20 minute TEC variations",
-                            #  "tnpgn_dtec_20_60_10_24.h5": "20-60 minute TEC variations",
+                             "tnpgn_dtec_2_10_10_24.h5": "2-10 minute TEC variations",
+                             "tnpgn_dtec_10_20_10_24.h5": "10-20 minute TEC variations",
+                             "tnpgn_dtec_20_60_10_24.h5": "20-60 minute TEC variations",
                             }
 
 TNPGN_FILES_PRODUCT_01_17 = {"tnpgn_roti_01_17.h5": "ROTI",
